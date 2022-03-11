@@ -16,5 +16,5 @@ import io.jobial.condense.{CloudformationStack, StackContext}
 
 object GreetingServiceStack extends CloudformationStack with GreetingServiceLambdaConfig :
 
-  def template(implicit context: StackContext) =
+  def template(using context: StackContext) =
     lambda[GreetingServiceLambdaRequestHandler]()
