@@ -13,9 +13,6 @@
 package io.jobial.scase.example.greeting.lambda
 
 import io.jobial.scase.core.*
-import spray.json.*
-import spray.json.DefaultJsonProtocol.*
-import spray.json.derived.auto.*
 
 sealed trait GreetingRequest[RESPONSE] extends Request[RESPONSE]
 

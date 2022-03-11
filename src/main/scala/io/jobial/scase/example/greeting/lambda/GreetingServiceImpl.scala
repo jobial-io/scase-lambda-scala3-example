@@ -20,9 +20,9 @@ class GreetingServiceLambdaRequestHandler
   extends IOLambdaRequestHandler[GreetingRequest[_ <: GreetingResponse], GreetingResponse]
     with GreetingServiceLambdaConfig:
 
-  def handleRequest(using context: RequestContext[IO]) =
+  def handleRequest(using RequestContext[IO]) =
     case m: Hello =>
-      m ! HelloResponse(s"Hello, ${m.person}!")
+      m ! HelloResponse(s"Hello, ${m.person}")
     case m: Hi =>
       for
         _ <- IO(println(s"processing request $m..."))
