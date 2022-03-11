@@ -16,17 +16,16 @@ import cats.effect.IO
 import io.jobial.scase.aws.lambda.IOLambdaRequestHandler
 import io.jobial.scase.core._
 
-
 class GreetingServiceLambdaRequestHandler
   extends IOLambdaRequestHandler[GreetingRequest[_ <: GreetingResponse], GreetingResponse]
-    with GreetingServiceLambdaConfig {
+    with GreetingServiceLambdaConfig:
 
-  def handleRequest(implicit context: RequestContext[IO]) = {
+  def handleRequest(implicit context: RequestContext[IO]) =
     case m: Hello =>
       m ! HelloResponse(s"Hello, ${m.person}!")
     case m: Hi =>
       for {
         _ <- IO(println(s"processing request $m..."))
       } yield m ! HiResponse(s"Hi ${m.person}")
-  }
-}
+  
+

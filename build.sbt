@@ -46,14 +46,9 @@ lazy val root: Project = project
       "io.jobial" % "condense_2.13" % ScaseVersion,
       "io.jobial" % "scase-core_2.13" % ScaseVersion % "compile->compile;test->test" exclude("commons-logging", "commons-logging-api"),
       "io.jobial" % "scase-aws_2.13" % ScaseVersion % "compile->compile;test->test" exclude("commons-logging", "commons-logging-api"),
-      "io.jobial" % "scase-circe_2.13" % ScaseVersion exclude("commons-logging", "commons-logging-api"),
+      "io.jobial" % "scase-spray-json_2.13" % ScaseVersion exclude("commons-logging", "commons-logging-api"),
+      "io.github.paoloboni" %% "spray-json-derived-codecs" % "2.3.5"
     ),
-    libraryDependencies ++= Seq(
-      "io.circe" %% "circe-core",
-      "io.circe" %% "circe-generic",
-      "io.circe" %% "circe-parser",
-      "io.circe" %% "circe-jawn"
-    ).map(_ % "0.14.1"),
     Proguard / proguardOptions ++= Seq(
       "-dontobfuscate", "-dontoptimize", "-dontnote", "-ignorewarnings",
       "-keep", "class", "io.jobial.scase.example.greeting.lambda.GreetingServiceLambdaRequestHandler", "{", "*;", "}",

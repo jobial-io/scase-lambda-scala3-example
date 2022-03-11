@@ -12,11 +12,14 @@
  */
 package io.jobial.scase.example.greeting.lambda
 
-import io.jobial.scase.core._
-import io.circe.Codec
+import io.jobial.scase.core.*
+import spray.json.JsonFormat
+import spray.json.derived.auto.*
+import spray.json._
+import spray.json.derived.auto._
+import spray.json.DefaultJsonProtocol._
 
-
-sealed trait GreetingRequest[RESPONSE] extends Request[RESPONSE] derives Codec
+sealed trait GreetingRequest[RESPONSE] extends Request[RESPONSE]
 
 sealed trait GreetingResponse
 

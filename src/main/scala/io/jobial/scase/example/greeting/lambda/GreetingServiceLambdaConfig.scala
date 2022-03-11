@@ -12,12 +12,14 @@
  */
 package io.jobial.scase.example.greeting.lambda
 
-import io.jobial.scase.aws.lambda.{LambdaRequestResponseServiceConfiguration, LambdaServiceConfiguration}
-import io.jobial.scase.marshalling.circe.*
-import shapeless.~?>.witness
+import io.jobial.scase.aws.lambda.LambdaServiceConfiguration
+import io.jobial.scase.marshalling.*
+import io.jobial.scase.marshalling.sprayjson.*
+import spray.json.derived.auto.*
+import spray.json._
+import spray.json.derived.auto._
+import spray.json.DefaultJsonProtocol._
 
-trait GreetingServiceLambdaConfig {
-
+trait GreetingServiceLambdaConfig:
   val serviceConfiguration =
     LambdaServiceConfiguration[GreetingRequest[_ <: GreetingResponse], GreetingResponse]("GreetingService")
-}
