@@ -12,9 +12,9 @@
  */
 package io.jobial.scase.example.greeting.lambda
 
-import io.jobial.condense.{CloudformationStack, StackContext}
+import io.jobial.condense.CloudformationStack
+import io.jobial.condense.StackContext
 
-object GreetingServiceStack extends CloudformationStack with GreetingServiceLambdaConfig :
-
+object GreetingServiceStack extends CloudformationStack with GreetingServiceLambdaConfig:
   def template(using context: StackContext) =
     lambda[GreetingServiceLambdaRequestHandler]()
