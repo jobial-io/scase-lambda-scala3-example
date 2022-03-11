@@ -14,7 +14,7 @@ package io.jobial.scase.example.greeting.lambda
 
 import cats.effect.IO
 import io.jobial.scase.aws.lambda.IOLambdaRequestHandler
-import io.jobial.scase.core._
+import io.jobial.scase.core.*
 
 class GreetingServiceLambdaRequestHandler
   extends IOLambdaRequestHandler[GreetingRequest[_ <: GreetingResponse], GreetingResponse]
