@@ -18,6 +18,7 @@ ThisBuild / version := "0.5.3"
 ThisBuild / Test / packageBin / publishArtifact := true
 ThisBuild / Test / packageSrc / publishArtifact := true
 ThisBuild / Test / packageDoc / publishArtifact := true
+Proguard / proguardVersion := "7.2.2"
 
 import com.lightbend.sbt.SbtProguard.autoImport.proguardOptions
 import sbt.Keys.{description, libraryDependencies, publishConfiguration}
