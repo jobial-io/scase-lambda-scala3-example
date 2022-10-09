@@ -15,7 +15,6 @@ package io.jobial.scase.example.greeting.lambda
 import cats.effect.IO
 import io.jobial.scase.core.*
 import io.jobial.sclap.CommandLineApp
-import scala.concurrent.ExecutionContext.Implicits.global
 
 object GreetingLambdaClient extends CommandLineApp with GreetingServiceLambdaConfig:
   def run =

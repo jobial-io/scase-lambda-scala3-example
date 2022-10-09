@@ -14,7 +14,8 @@ name := "scase-lambda-scala3-example"
 
 ThisBuild / organization := "io.jobial"
 ThisBuild / scalaVersion := "3.2.0"
-ThisBuild / version := "0.5.3"
+ThisBuild / version := "0.5.4"
+ThisBuild / javacOptions ++= Seq("-source", "11", "-target", "11")
 ThisBuild / Test / packageBin / publishArtifact := true
 ThisBuild / Test / packageSrc / publishArtifact := true
 ThisBuild / Test / packageDoc / publishArtifact := true
@@ -35,7 +36,7 @@ lazy val commonSettings = Seq(
   description := "Run functional Scala code as a portable serverless function or microservice"
 )
 
-lazy val ScaseVersion = "0.5.3"
+lazy val ScaseVersion = "0.5.4"
 
 lazy val root: Project = project
   .in(file("."))
@@ -52,17 +53,17 @@ lazy val root: Project = project
     ),
     Proguard / proguardOptions ++= Seq(
       "-dontobfuscate", "-dontoptimize", "-dontnote", "-ignorewarnings",
-      "-keep", "class", "io.jobial.scase.example.greeting.lambda.GreetingServiceLambdaRequestHandler", "{", "*;", "}",
-      "-keepclassmembers", "class", "io.jobial.scase.example.greeting.lambda.GreetingServiceLambdaRequestHandler", "{", "*;", "}",
-      "-keepclassmembers", "class", "io.jobial.scase.aws.lambda.LambdaRequestHandler", "{", "*;", "}",
-      "-keep", "class", "com.amazonaws.services.**", "{", "*;", "}",
-      "-keep", "class", "scala.Symbol", "{", "*;", "}",
+      "-keep class io.jobial.scase.example.greeting.lambda.** {*;}",
+      "-keepclassmembers class io.jobial.scase.aws.lambda.LambdaRequestHandler {*;}",
+      "-keep class com.amazonaws.services.lambda.** {*;}",
+      "-keep class scala.Symbol {*;}"
     ),
     Proguard / proguardInputFilter := { file =>
       file.name match {
         case _ => Some("!META-INF/**,!about.html,!org/apache/commons/logging/**")
       }
     },
-    Proguard / proguard / javaOptions := Seq("-Xmx2G")
+    Proguard / proguard / javaOptions := Seq("-Xmx2G"),
+    Proguard / proguardVersion := "7.2.2"
   )
 
