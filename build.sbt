@@ -14,7 +14,7 @@ name := "scase-lambda-scala3-example"
 
 ThisBuild / organization := "io.jobial"
 ThisBuild / scalaVersion := "3.2.0"
-ThisBuild / version := "0.5.4"
+ThisBuild / version := "0.6.0"
 ThisBuild / javacOptions ++= Seq("-source", "11", "-target", "11")
 ThisBuild / Test / packageBin / publishArtifact := true
 ThisBuild / Test / packageSrc / publishArtifact := true
@@ -36,7 +36,7 @@ lazy val commonSettings = Seq(
   description := "Run functional Scala code as a portable serverless function or microservice"
 )
 
-lazy val ScaseVersion = "0.5.4"
+lazy val ScaseVersion = "0.6.0"
 
 lazy val root: Project = project
   .in(file("."))

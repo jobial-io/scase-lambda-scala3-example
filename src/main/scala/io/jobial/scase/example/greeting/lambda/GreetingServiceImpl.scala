@@ -26,7 +26,8 @@ class GreetingServiceLambdaRequestHandler
     case m: Hi =>
       for
         _ <- IO(println(s"processing request $m..."))
-      yield
-        m ! HiResponse(s"Hi ${m.person}")
+        r <- m ! HiResponse(s"Hi ${m.person}")
+      yield r
+        
   
 
